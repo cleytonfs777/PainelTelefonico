@@ -32,7 +32,8 @@ url_theme1 = dbc.themes.FLATLY
 url_theme2 = dbc.themes.DARKLY
 
 # ===== Reading and cleaning File ====== #
-df_geral = pd.read_csv('assets/df_geral.csv', sep=',')
+df_geral = pd.read_csv(os.path.join('assets', 'df_geral.csv'), sep=',')
+
 # Converter 'Tempo' para datetime
 df_geral['Tempo'] = pd.to_datetime(df_geral['Tempo'])
 df_geral['dia'] = df_geral['Tempo'].dt.day  # Extrair o dia para o gráfico
@@ -429,5 +430,5 @@ def update_graphs(month, cobs, toggle):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))  # Usando a variável de ambiente 'PORT'
-    # app.run_server(host='0.0.0.0', port=port)  # Certifique-se de que o host seja '0.0.0.0'
+    port = int(os.environ.get("PORT", 8080))
+    app.run_server(host='0.0.0.0', port=port)
