@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+import os
 
 # import from folders/theme changer
 from dash_bootstrap_templates import ThemeSwitchAIO
@@ -427,5 +428,6 @@ def update_graphs(month, cobs, toggle):
     return fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8
 
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))  # Usando a variável de ambiente 'PORT'
+    # app.run_server(host='0.0.0.0', port=port)  # Certifique-se de que o host seja '0.0.0.0'
