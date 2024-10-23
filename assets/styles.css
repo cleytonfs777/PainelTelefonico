@@ -1,0 +1,33 @@
+#output-div {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#filter-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: .1rem; /* Controla o espaçamento geral entre as colunas e linhas */
+    row-gap: 1rem; /* Adiciona um espaçamento específico entre as linhas */
+    margin-bottom: 1rem;
+    text-align: center;
+
+}
+
+#filter-buttons > label span {
+    width: 100%;
+}
+
+#cob-filter-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#filter-buttons input[type="checkbox"]:checked + label {
+    background-color: blue; /* Altera a cor de fundo do botão marcado */
+    border: 2px solid #6DA6E4FF; /* Altera a borda do botão marcado */
+}
