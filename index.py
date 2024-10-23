@@ -350,14 +350,12 @@ def update_graphs(month, cobs, toggle):
         mode='number+delta',
         title={
             "text": f"<span>{atendidas_por_atendente['Teleatendente'].iloc[0]} - Top Atendente</span><br>"
-            f"<span style='font-size:90%'>COB: {
-                atendidas_por_atendente['COB_nome'].iloc[0]}</span><br>"
+            f"<span style='font-size:90%'>COB: {atendidas_por_atendente['COB_nome'].iloc[0]}</span><br>"
             f"<span style='font-size:90%'>Ligações atendidas - em relação à média</span>"
         },
         value=atendidas_por_atendente['Quantidade'].iloc[0],
         number={'suffix': " ligações", 'font': {'size': 50}},
-        delta={'relative': True, 'valueformat': '.1%',
-               'reference': media_atendidas, 'position': "bottom", 'font': {'size': 30}}
+        delta={'relative': True, 'valueformat': '.1%','reference': media_atendidas, 'position': "bottom", 'font': {'size': 30}}
     ))
 
     # Atualizando o layout para ocupar todo o espaço
@@ -385,8 +383,7 @@ def update_graphs(month, cobs, toggle):
         },
         value=atendidas_por_cob['Quantidade'].iloc[0],
         number={'suffix': " ligações", 'font': {'size': 50}},
-        delta={'relative': True, 'valueformat': '.1%',
-               'reference': media_atendidas_por_cob, 'position': "bottom", 'font': {'size': 30}}
+        delta={'relative': True, 'valueformat': '.1%','reference': media_atendidas_por_cob, 'position': "bottom", 'font': {'size': 30}}
     ))
 
     # Atualizando o layout para ocupar todo o espaço
@@ -415,8 +412,7 @@ def update_graphs(month, cobs, toggle):
         },
         value=nao_atendidas_por_cob['Quantidade'].iloc[0],
         number={'suffix': " ligações", 'font': {'size': 50}},
-        delta={'relative': True, 'valueformat': '.1%',
-               'reference': media_nao_atendidas_por_cob, 'position': "bottom", 'font': {'size': 30}}
+        delta={'relative': True, 'valueformat': '.1%','reference': media_nao_atendidas_por_cob, 'position': "bottom", 'font': {'size': 30}}
     ))
 
     # Atualizando o layout para ocupar todo o espaço
