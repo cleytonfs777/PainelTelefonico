@@ -31,7 +31,7 @@ url_theme1 = dbc.themes.FLATLY
 url_theme2 = dbc.themes.DARKLY
 
 # ===== Reading and cleaning File ====== #
-df_geral = pd.read_csv('CSVBM/df_geral.csv', sep=',')
+df_geral = pd.read_csv('assets/df_geral.csv', sep=',')
 # Converter 'Tempo' para datetime
 df_geral['Tempo'] = pd.to_datetime(df_geral['Tempo'])
 df_geral['dia'] = df_geral['Tempo'].dt.day  # Extrair o dia para o gráfico
@@ -115,11 +115,11 @@ options_month = [{'label': convert_to_text(
     mes), 'value': mes} for mes in df_geral['Mês'].unique()]
 options_month = sorted(options_month, key=lambda x: x['value'])
 # Adicionar "Todos"
-options_month.insert(0, {'label': 'Todos', 'value': 'all'})
+# options_month.insert(0, {'label': 'Todos', 'value': 'all'})
 
 # Gerar opções de COBs com base no dicionário cob_legend
 options_cob = [{'label': cob_legend[key], 'value': key} for key in cob_legend]
-options_cob.insert(0, {'label': 'Todos', 'value': 'all'})  # Adiciona "Todos"
+# options_cob.insert(0, {'label': 'Todos', 'value': 'all'})  # Adiciona "Todos"
 
 # Layout do Dashboard
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
@@ -261,39 +261,6 @@ app.layout = dbc.Container(children=[
 
 # Callback para Graficos
 # Callback para atualizar os filtros
-
-
-@app.callback(
-    Output('filter-buttons', 'value'),
-    Output('cob-filter-buttons', 'value'),
-    Input('filter-buttons', 'value'),
-    Input('cob-filter-buttons', 'value'),
-)
-def update_checklist(month_selected, cob_selected):
-    # Verificar se "Todos" foi selecionado para o mês
-    if 'all' in month_selected:
-        # Marcar todas as opções
-        month_selected = [option['value']
-                          for option in options_month if option['value'] != 'all']
-
-    # Verificar se "Todos" foi selecionado para COB
-    if 'all' in cob_selected:
-        # Marcar todas as opções
-        cob_selected = [option['value']
-                        for option in options_cob if option['value'] != 'all']
-
-    # Verificar se algum item foi desmarcado
-    if not month_selected or 'all' not in month_selected:
-        # Desmarcar "Todos" se qualquer um for desmarcado
-        month_selected = [option['value']
-                          for option in options_month if option['value'] != 'all']
-
-    if not cob_selected or 'all' not in cob_selected:
-        # Desmarcar "Todos" se qualquer um for desmarcado
-        cob_selected = [option['value']
-                        for option in options_cob if option['value'] != 'all']
-
-    return month_selected, cob_selected
 
 
 @app.callback(

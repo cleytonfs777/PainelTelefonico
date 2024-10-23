@@ -27,7 +27,12 @@
     text-align: center;
 }
 
-#filter-buttons input[type="checkbox"]:checked + label {
-    background-color: blue; /* Altera a cor de fundo do botão marcado */
-    border: 2px solid #6DA6E4FF; /* Altera a borda do botão marcado */
+#filter-buttons .dash-checkbox input:checked + label {
+    background-color: #6DA6E4FF; /* Cor de fundo para checkbox selecionado */
+    color: white; /* Cor do texto para checkbox selecionado */
+}
+
+#filter-buttons .dash-checkbox input:not(:checked) + label {
+    background-color: #00244BFF; /* Cor de fundo para checkbox não selecionado */
+    color: white; /* Cor do texto para checkbox não selecionado */
 }
