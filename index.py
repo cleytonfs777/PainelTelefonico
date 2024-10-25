@@ -198,6 +198,7 @@ def update_graphs(month, cobs, toggle, show_legend):
 
     chamadas_por_dia_cob = df_filtered.groupby([df_filtered['Tempo'].dt.date, 'COB_nome']).size().reset_index(name='Quantidade')
     fig1 = px.bar(chamadas_por_dia_cob, x='Tempo', y='Quantidade', color='COB_nome',
+                  title='Quantidade de Chamadas por Dia e Região (COB)',
                   labels={'Quantidade': 'Número de Chamadas', 'Tempo': 'Dia', 'COB_nome': 'Região (COB)'})
     fig1.update_layout(legend_title_text='Região (COB)', legend=dict(traceorder='normal'), template=template)
     adjust_graph_layout(fig1, show_legend)
@@ -206,18 +207,21 @@ def update_graphs(month, cobs, toggle, show_legend):
     status_mapping = {0: 'Não Atendido', 1: 'Atendido'}
     atendidas_nao_atendidas['Status'] = atendidas_nao_atendidas['Status'].map(status_mapping)
     fig2 = px.bar(atendidas_nao_atendidas, x='COB_nome', y='Quantidade', color='Status',
+                  title='Atendidas e Não Atendidas por Região (COB)',
                   labels={'Quantidade': 'Número de Chamadas', 'COB_nome': 'Região (COB)', 'Status': 'Atendimento'})
     fig2.update_layout(legend_title_text='Atendimento', legend=dict(traceorder='normal'), template=template)
     adjust_graph_layout(fig2, show_legend)
 
     chamadas_por_faixa_horaria = df_filtered.groupby(['faixa_horaria', 'COB_nome']).size().reset_index(name='Quantidade')
     fig3 = px.bar(chamadas_por_faixa_horaria, x='faixa_horaria', y='Quantidade', color='COB_nome',
+                  title='Quantidade de Chamadas por Faixa Horária e Região (COB)',
                   labels={'Quantidade': 'Número de Chamadas', 'faixa_horaria': 'Faixa Horária', 'COB_nome': 'Região (COB)'})
     fig3.update_layout(legend_title_text='Região (COB)', legend=dict(traceorder='normal'), template=template)
     adjust_graph_layout(fig3, show_legend)
 
     chamadas_por_faixa_cob = df_filtered.groupby(['faixa_horaria', 'COB_nome']).size().reset_index(name='Quantidade')
     fig4 = px.line(chamadas_por_faixa_cob, x='faixa_horaria', y='Quantidade', color='COB_nome',
+                   title='Quantidade de Chamadas por Faixa Horária e Região (COB)',
                    labels={'faixa_horaria': 'Faixa Horária', 'Quantidade': 'Número de Chamadas', 'COB_nome': 'Região (COB)'})
     fig4.update_layout(legend_title_text='Região (COB)', legend=dict(traceorder='normal'), template=template)
     adjust_graph_layout(fig4, show_legend)
