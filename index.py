@@ -199,9 +199,13 @@ def update_graphs(month, cobs, toggle, show_legend):
     chamadas_por_dia_cob = df_filtered.groupby([df_filtered['Tempo'].dt.date, 'COB_nome']).size().reset_index(name='Quantidade')
     fig1 = px.bar(chamadas_por_dia_cob, x='Tempo', y='Quantidade', color='COB_nome',
                   title='Quantidade de Chamadas por Dia e Região (COB)',
-                  labels={'Quantidade': 'Número de Chamadas', 'Tempo': 'Dia', 'COB_nome': 'Região (COB)'})
+                  labels={'Quantidade': 'Número de Chamadas', 'Tempo': 'Dia', 'COB_nome': 'Região (COB)'},
+                      color_discrete_sequence=['#636EFA', '#FF0000', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3', '#FFFF00', '#B6E880'])
     fig1.update_layout(legend_title_text='Região (COB)', legend=dict(traceorder='normal'), template=template)
+    # Atualizando o layout com estilização do título
     adjust_graph_layout(fig1, show_legend)
+
+
 
     atendidas_nao_atendidas = df_filtered.groupby(['COB_nome', 'Status']).size().reset_index(name='Quantidade')
     status_mapping = {0: 'Não Atendido', 1: 'Atendido'}
@@ -215,14 +219,16 @@ def update_graphs(month, cobs, toggle, show_legend):
     chamadas_por_faixa_horaria = df_filtered.groupby(['faixa_horaria', 'COB_nome']).size().reset_index(name='Quantidade')
     fig3 = px.bar(chamadas_por_faixa_horaria, x='faixa_horaria', y='Quantidade', color='COB_nome',
                   title='Quantidade de Chamadas por Faixa Horária e Região (COB)',
-                  labels={'Quantidade': 'Número de Chamadas', 'faixa_horaria': 'Faixa Horária', 'COB_nome': 'Região (COB)'})
+                  labels={'Quantidade': 'Número de Chamadas', 'faixa_horaria': 'Faixa Horária', 'COB_nome': 'Região (COB)'},
+                      color_discrete_sequence=['#636EFA', '#FF0000', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3', '#FFFF00', '#B6E880'])
     fig3.update_layout(legend_title_text='Região (COB)', legend=dict(traceorder='normal'), template=template)
     adjust_graph_layout(fig3, show_legend)
 
     chamadas_por_faixa_cob = df_filtered.groupby(['faixa_horaria', 'COB_nome']).size().reset_index(name='Quantidade')
     fig4 = px.line(chamadas_por_faixa_cob, x='faixa_horaria', y='Quantidade', color='COB_nome',
                    title='Quantidade de Chamadas por Faixa Horária e Região (COB)',
-                   labels={'faixa_horaria': 'Faixa Horária', 'Quantidade': 'Número de Chamadas', 'COB_nome': 'Região (COB)'})
+                   labels={'faixa_horaria': 'Faixa Horária', 'Quantidade': 'Número de Chamadas', 'COB_nome': 'Região (COB)'},
+                      color_discrete_sequence=['#636EFA', '#FF0000', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3', '#FFFF00', '#B6E880'])
     fig4.update_layout(legend_title_text='Região (COB)', legend=dict(traceorder='normal'), template=template)
     adjust_graph_layout(fig4, show_legend)
 
@@ -230,7 +236,8 @@ def update_graphs(month, cobs, toggle, show_legend):
     atendidas_por_cob = chamadas_atendidas.groupby('COB_nome').size().reset_index(name='Quantidade')
     fig5 = px.pie(atendidas_por_cob, values='Quantidade', names='COB_nome',
                   title='Distribuição de ligações atendidas por COB (Região)',
-                  labels={'COB_nome': 'Região (COB)', 'Quantidade': 'Número de Chamadas'})
+                  labels={'COB_nome': 'Região (COB)', 'Quantidade': 'Número de Chamadas'},
+                      color_discrete_sequence=['#636EFA', '#FF0000', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3', '#FFFF00', '#B6E880'])
     fig5.update_layout(template=template)
     adjust_graph_layout(fig5, show_legend)
 
