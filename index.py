@@ -101,6 +101,9 @@ options_cob = [{'label': cob_legend[key], 'value': key} for key in cob_legend]
 
 # Layout do Dashboard
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+app.title = "Painel de Telefonia"  # Defina o título da página aqui
+
+
 
 # =========  Layout  =========== #
 app.layout = dbc.Container(children=[
