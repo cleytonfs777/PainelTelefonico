@@ -330,6 +330,8 @@ def update_graphs(month, cobs, toggle, show_legend):
 
     return fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8
 
+server = app.server  # <-- Adicionado aqui
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     app.run_server(host='0.0.0.0', port=port)
